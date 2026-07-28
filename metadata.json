@@ -1,0 +1,6 @@
+{
+  "name": "Axentra Technologies - Real Tasks Platform",
+  "description": "Interactive internship and learning platform with domain tracks, task execution, AI mentor code reviews, submissions management, and verifiable certificate generation.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
