@@ -503,7 +503,7 @@ export const DomainDetailPage: React.FC<DomainDetailPageProps> = ({
                     badgeBg: 'bg-blue-50 text-blue-700 border-blue-200',
                     desc: 'Fast-paced intensive program. Ideal for quick hands-on project experience.',
                     deliverables: '3 Projects + ISO Cert',
-                    paymentUrl: 'https://rzp.io/rzp/uPCxt26',
+                    paymentUrl: 'https://forms.gle/aJddkF33gm9GzMrq5',
                   },
                   {
                     id: '6-weeks',
@@ -512,7 +512,7 @@ export const DomainDetailPage: React.FC<DomainDetailPageProps> = ({
                     badgeBg: 'bg-emerald-50 text-emerald-700 border-emerald-200',
                     desc: 'Standard academic credit duration matching university requirements.',
                     deliverables: '4 Projects + Scorecard',
-                    paymentUrl: 'https://rzp.io/rzp/uPCxt26',
+                    paymentUrl: 'https://forms.gle/oxM8H4yo7qefGiQc6',
                   },
                   {
                     id: '3-months',
@@ -521,7 +521,7 @@ export const DomainDetailPage: React.FC<DomainDetailPageProps> = ({
                     badgeBg: 'bg-purple-50 text-purple-700 border-purple-200',
                     desc: 'Deep-dive domain mastery. Build complex full-stack applications.',
                     deliverables: '5 Capstone Projects',
-                    paymentUrl: 'https://rzp.io/rzp/eKsjegk8',
+                    paymentUrl: 'https://forms.gle/P9yC95ZYWkA9zVVE6',
                   },
                   {
                     id: '6-months',
@@ -530,7 +530,7 @@ export const DomainDetailPage: React.FC<DomainDetailPageProps> = ({
                     badgeBg: 'bg-amber-50 text-amber-800 border-amber-200',
                     desc: 'Production experience, LOR & Placement Assistance.',
                     deliverables: 'Advanced Architecture + LOR',
-                    paymentUrl: 'https://rzp.io/rzp/eKsjegk8',
+                    paymentUrl: 'https://forms.gle/e5b45ed3dzF1FpCHA',
                   },
                 ].map((plan) => {
                   const isSelected = selectedDuration === plan.duration;
