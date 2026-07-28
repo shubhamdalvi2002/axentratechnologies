@@ -41,7 +41,7 @@ export default function App() {
 
   // Scroll to top on viewMode change
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
+    window.scrollTo(0, 0);
   }, [viewMode]);
 
   // Load initial data from local storage / seeds

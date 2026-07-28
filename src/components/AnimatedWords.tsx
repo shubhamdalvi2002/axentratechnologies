@@ -34,15 +34,13 @@ export const AnimatedWords: React.FC<AnimatedWordsProps> = ({
   const wordVariants = {
     hidden: {
       opacity: 0,
-      y: 12,
-      filter: 'blur(3px)',
+      y: 10,
     },
     visible: {
       opacity: 1,
       y: 0,
-      filter: 'blur(0px)',
       transition: {
-        duration: 0.35,
+        duration: 0.25,
         ease: [0.215, 0.61, 0.355, 1],
       },
     },

@@ -10,17 +10,12 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    // Lock scroll while preloader is active
-    document.body.style.overflow = 'hidden';
-
     const timer = setTimeout(() => {
       setIsVisible(false);
-      document.body.style.overflow = '';
       if (onComplete) onComplete();
-    }, 1200);
+    }, 1000);
 
     return () => {
-      document.body.style.overflow = '';
       clearTimeout(timer);
     };
   }, [onComplete]);

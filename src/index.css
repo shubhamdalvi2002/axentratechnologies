@@ -6,11 +6,12 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   overflow-x: hidden;
   width: 100%;
   font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-overflow-scrolling: touch;
 }
 
 body {
@@ -34,16 +35,18 @@ body {
 
 @keyframes marquee {
   0% {
-    transform: translateX(0%);
+    transform: translate3d(0%, 0, 0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
 .animate-marquee {
   display: flex;
   width: max-content;
+  will-change: transform;
+  transform: translateZ(0);
   animation: marquee 50s linear infinite;
 }
 
