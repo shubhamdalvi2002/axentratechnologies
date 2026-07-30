@@ -94,32 +94,40 @@ export const Header: React.FC<HeaderProps> = ({
           >
             <button
               onClick={() => { setViewMode('landing'); setMobileMenuOpen(false); }}
-              className="text-left py-2 text-slate-600 hover:text-slate-900 border-b border-slate-100"
+              className={`text-left py-3 px-2 rounded-xl transition-colors flex items-center justify-between cursor-pointer ${
+                viewMode === 'landing' ? 'bg-indigo-50 text-indigo-700 font-semibold' : 'text-slate-700 hover:bg-slate-50'
+              }`}
             >
-              Overview
+              <span>Overview</span>
             </button>
             <button
               onClick={() => { setViewMode('domains'); setMobileMenuOpen(false); }}
-              className="text-left py-2 text-slate-600 hover:text-slate-900 border-b border-slate-100"
+              className={`text-left py-3 px-2 rounded-xl transition-colors flex items-center justify-between cursor-pointer ${
+                viewMode === 'domains' ? 'bg-indigo-50 text-indigo-700 font-semibold' : 'text-slate-700 hover:bg-slate-50'
+              }`}
             >
-              Domains Track
+              <span>Domains Track</span>
             </button>
             <button
               onClick={() => { setViewMode('verify_cert'); setMobileMenuOpen(false); }}
-              className="text-left py-2 text-slate-600 hover:text-slate-900 border-b border-slate-100"
+              className={`text-left py-3 px-2 rounded-xl transition-colors flex items-center justify-between cursor-pointer ${
+                viewMode === 'verify_cert' ? 'bg-indigo-50 text-indigo-700 font-semibold' : 'text-slate-700 hover:bg-slate-50'
+              }`}
             >
-              Verify Certificates
+              <span>Verify Certificates</span>
             </button>
             <button
               onClick={() => { setViewMode('about'); setMobileMenuOpen(false); }}
-              className="text-left py-2 text-slate-600 hover:text-slate-900 border-b border-slate-100"
+              className={`text-left py-3 px-2 rounded-xl transition-colors flex items-center justify-between cursor-pointer ${
+                viewMode === 'about' ? 'bg-indigo-50 text-indigo-700 font-semibold' : 'text-slate-700 hover:bg-slate-50'
+              }`}
             >
-              About Us
+              <span>About Us</span>
             </button>
             <motion.button
               whileTap={{ scale: 0.97 }}
               onClick={() => { setViewMode('domains'); setMobileMenuOpen(false); }}
-              className="w-full text-center py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs mt-1"
+              className="w-full text-center py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs mt-1 shadow-xs cursor-pointer"
             >
               Apply for Internship
             </motion.button>
