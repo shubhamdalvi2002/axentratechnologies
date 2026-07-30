@@ -133,7 +133,6 @@ export default function App() {
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
             >
               <Hero setViewMode={setViewMode} />
-              <CompanyMarquee />
               <DomainGrid
                 domains={domains}
                 selectedDomainId={activeDomainId}
@@ -142,6 +141,7 @@ export default function App() {
                 onRequestCustomDomain={handleRequestCustomDomain}
                 onOpenApply={handleOpenApplyModal}
               />
+              <CompanyMarquee />
               <ProcessSteps />
               <TrustBadges />
             </motion.div>
