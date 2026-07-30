@@ -12,13 +12,11 @@ interface DomainGridProps {
   onSelectDomain: (domain: DomainTrack) => void;
   setViewMode: (mode: ViewMode) => void;
   onRequestCustomDomain?: () => void;
-  onOpenApply?: (domain?: DomainTrack) => void;
 }
 
 export const DomainGrid: React.FC<DomainGridProps> = ({
   domains,
   onSelectDomain,
-  onOpenApply,
 }) => {
   const [activeCategory, setActiveCategory] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -154,11 +152,7 @@ export const DomainGrid: React.FC<DomainGridProps> = ({
                       whileTap={{ scale: 0.96 }}
                       onClick={(e) => {
                         e.stopPropagation();
-                        if (onOpenApply) {
-                          onOpenApply(d);
-                        } else {
-                          onSelectDomain(d);
-                        }
+                        onSelectDomain(d);
                       }}
                       className="w-full py-2 px-4 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-xs transition-colors shadow-xs text-center cursor-pointer"
                     >

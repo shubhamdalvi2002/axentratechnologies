@@ -25,7 +25,6 @@ import { Footer } from './components/Footer';
 import { DomainDetailPage } from './components/DomainDetailPage';
 import { Preloader } from './components/Preloader';
 import { AuroraBackground } from './components/AuroraBackground';
-import { ApplicationModal } from './components/ApplicationModal';
 import { motion, AnimatePresence } from 'motion/react';
 
 export default function App() {
@@ -39,20 +38,6 @@ export default function App() {
   const [selectedTrackDomain, setSelectedTrackDomain] = useState<DomainTrack | null>(null);
 
   const [toastMessage, setToastMessage] = useState<string | null>(null);
-
-  // Application Modal State
-  const [isAppModalOpen, setIsAppModalOpen] = useState(false);
-  const [appModalDomain, setAppModalDomain] = useState<DomainTrack | null>(null);
-  const [appModalDuration, setAppModalDuration] = useState<'4 Weeks' | '6 Weeks' | '3 Months' | '6 Months' | null>(null);
-
-  const handleOpenApplyModal = (
-    domain?: DomainTrack | null,
-    duration?: '4 Weeks' | '6 Weeks' | '3 Months' | '6 Months' | null
-  ) => {
-    setAppModalDomain(domain || selectedTrackDomain || activeDomain || null);
-    setAppModalDuration(duration || '4 Weeks');
-    setIsAppModalOpen(true);
-  };
 
   // Scroll to top on viewMode change
   useEffect(() => {
@@ -118,7 +103,6 @@ export default function App() {
         setViewMode={setViewMode}
         selectedDomainTitle={activeDomain.title}
         onSelectDomain={() => setViewMode('domains')}
-        onOpenApply={() => handleOpenApplyModal()}
       />
 
       {/* Main Views Routing with Smooth Page Transitions */}
@@ -133,15 +117,14 @@ export default function App() {
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
             >
               <Hero setViewMode={setViewMode} />
+              <CompanyMarquee />
               <DomainGrid
                 domains={domains}
                 selectedDomainId={activeDomainId}
                 onSelectDomain={handleSelectDomainClick}
                 setViewMode={setViewMode}
                 onRequestCustomDomain={handleRequestCustomDomain}
-                onOpenApply={handleOpenApplyModal}
               />
-              <CompanyMarquee />
               <ProcessSteps />
               <TrustBadges />
             </motion.div>
@@ -161,7 +144,6 @@ export default function App() {
                 onSelectDomain={handleSelectDomainClick}
                 setViewMode={setViewMode}
                 onRequestCustomDomain={handleRequestCustomDomain}
-                onOpenApply={handleOpenApplyModal}
               />
             </motion.div>
           )}
@@ -184,7 +166,6 @@ export default function App() {
                   setToastMessage(msg);
                   setTimeout(() => setToastMessage(null), 3000);
                 }}
-                onOpenApply={handleOpenApplyModal}
               />
             </motion.div>
           )}
@@ -217,18 +198,6 @@ export default function App() {
 
       {/* Footer */}
       <Footer setViewMode={setViewMode} />
-
-      {/* Built-in Application Modal */}
-      <ApplicationModal
-        isOpen={isAppModalOpen}
-        onClose={() => setIsAppModalOpen(false)}
-        initialDomain={appModalDomain}
-        initialDuration={appModalDuration}
-        onSuccess={(app) => {
-          setToastMessage(`Application ${app.id} confirmed! Onboarding details sent to ${app.email}`);
-          setTimeout(() => setToastMessage(null), 5000);
-        }}
-      />
 
       {/* Global Toast Notification */}
       <AnimatePresence>
