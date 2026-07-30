@@ -13,7 +13,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
     const timer = setTimeout(() => {
       setIsVisible(false);
       if (onComplete) onComplete();
-    }, 1000);
+    }, 150);
 
     return () => {
       clearTimeout(timer);
@@ -26,7 +26,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
         <motion.div
           key="preloader"
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }}
+          exit={{ opacity: 0, transition: { duration: 0.2, ease: 'easeOut' } }}
           className="fixed inset-0 z-[100] bg-slate-950 flex flex-col items-center justify-center p-4 selection:bg-none pointer-events-none"
         >
           {/* Subtle Ambient Glow */}
