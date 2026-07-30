@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useInView, useMotionValue, useSpring } from 'motion/react';
 
 interface CountUpProps {
@@ -27,8 +27,6 @@ export const CountUp: React.FC<CountUpProps> = ({ value, className = '', duratio
     duration: duration * 1000,
   });
 
-  const [displayVal, setDisplayVal] = useState('0');
-
   useEffect(() => {
     if (isInView) {
       motionVal.set(rawNumber);
@@ -37,17 +35,19 @@ export const CountUp: React.FC<CountUpProps> = ({ value, className = '', duratio
 
   useEffect(() => {
     return springVal.on('change', (latest) => {
+      if (!ref.current) return;
       let formatted = Math.round(latest).toString();
       if (hasComma) {
         formatted = Math.round(latest).toLocaleString('en-US');
       }
-      setDisplayVal(formatted);
+      ref.current.textContent = `${prefix}${formatted}${suffix}`;
     });
-  }, [springVal, hasComma]);
+  }, [springVal, hasComma, prefix, suffix]);
 
   return (
     <span ref={ref} className={className}>
-      {prefix}{isInView ? displayVal : '0'}{suffix}
+      {prefix}0{suffix}
     </span>
   );
 };
+

@@ -41,7 +41,7 @@ export default function App() {
 
   // Scroll to top on viewMode change
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
   }, [viewMode]);
 
   // Load initial data from local storage / seeds
@@ -90,7 +90,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans antialiased selection:bg-indigo-600 selection:text-white relative overflow-x-hidden">
+    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans antialiased selection:bg-indigo-600 selection:text-white relative">
       {/* SaaS Preloader */}
       <Preloader />
 

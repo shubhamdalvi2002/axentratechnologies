@@ -13,58 +13,25 @@ interface AnimatedWordsProps {
 export const AnimatedWords: React.FC<AnimatedWordsProps> = ({
   text,
   className = '',
-  wordClassName = '',
   delay = 0,
-  stagger = 0.03,
   as = 'div',
 }) => {
-  const words = text.split(' ');
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: stagger,
-        delayChildren: delay,
-      },
-    },
-  };
-
-  const wordVariants = {
-    hidden: {
-      opacity: 0,
-      y: 10,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.25,
-        ease: [0.215, 0.61, 0.355, 1],
-      },
-    },
-  };
-
   const MotionComponent = motion[as] as React.ElementType;
 
   return (
     <MotionComponent
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: '-30px' }}
-      variants={containerVariants}
-      className={`inline-flex flex-wrap gap-x-[0.25em] gap-y-[0.1em] ${className}`}
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-20px' }}
+      transition={{
+        duration: 0.35,
+        delay: delay,
+        ease: [0.16, 1, 0.3, 1],
+      }}
+      className={className}
     >
-      {words.map((word, idx) => (
-        <motion.span
-          key={idx}
-          variants={wordVariants}
-          className={`inline-block ${wordClassName}`}
-        >
-          {word}
-        </motion.span>
-      ))}
+      {text}
     </MotionComponent>
   );
 };
+

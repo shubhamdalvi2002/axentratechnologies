@@ -30,7 +30,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
           className="fixed inset-0 z-[100] bg-slate-950 flex flex-col items-center justify-center p-4 selection:bg-none pointer-events-none"
         >
           {/* Subtle Ambient Glow */}
-          <div className="absolute w-96 h-96 bg-indigo-600/20 rounded-full blur-[120px] pointer-events-none" />
+          <div className="absolute w-96 h-96 bg-[radial-gradient(circle,rgba(99,102,241,0.25)_0%,transparent_70%)] rounded-full pointer-events-none" />
 
           {/* Logo Container */}
           <motion.div
