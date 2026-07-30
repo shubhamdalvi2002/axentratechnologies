@@ -32,6 +32,7 @@ interface DomainDetailPageProps {
   onEnroll: (domain: DomainTrack) => void;
   isEnrolled: boolean;
   onToast: (msg: string) => void;
+  onOpenApply?: (domain?: DomainTrack, duration?: '4 Weeks' | '6 Weeks' | '3 Months' | '6 Months') => void;
 }
 
 export const DomainDetailPage: React.FC<DomainDetailPageProps> = ({
@@ -41,6 +42,7 @@ export const DomainDetailPage: React.FC<DomainDetailPageProps> = ({
   onEnroll,
   isEnrolled,
   onToast,
+  onOpenApply,
 }) => {
   const [activeTab, setActiveTab] = useState<'overview' | 'tasks' | 'certificate' | 'faqs'>('overview');
   const [selectedDuration, setSelectedDuration] = useState<'4 Weeks' | '6 Weeks' | '3 Months' | '6 Months' | null>(null);
@@ -503,7 +505,6 @@ export const DomainDetailPage: React.FC<DomainDetailPageProps> = ({
                     badgeBg: 'bg-blue-50 text-blue-700 border-blue-200',
                     desc: 'Fast-paced intensive program. Ideal for quick hands-on project experience.',
                     deliverables: '3 Projects + ISO Cert',
-                    paymentUrl: 'https://forms.gle/aJddkF33gm9GzMrq5',
                   },
                   {
                     id: '6-weeks',
@@ -512,7 +513,6 @@ export const DomainDetailPage: React.FC<DomainDetailPageProps> = ({
                     badgeBg: 'bg-emerald-50 text-emerald-700 border-emerald-200',
                     desc: 'Standard academic credit duration matching university requirements.',
                     deliverables: '4 Projects + Scorecard',
-                    paymentUrl: 'https://forms.gle/oxM8H4yo7qefGiQc6',
                   },
                   {
                     id: '3-months',
@@ -521,7 +521,6 @@ export const DomainDetailPage: React.FC<DomainDetailPageProps> = ({
                     badgeBg: 'bg-purple-50 text-purple-700 border-purple-200',
                     desc: 'Deep-dive domain mastery. Build complex full-stack applications.',
                     deliverables: '5 Capstone Projects',
-                    paymentUrl: 'https://forms.gle/P9yC95ZYWkA9zVVE6',
                   },
                   {
                     id: '6-months',
@@ -530,7 +529,6 @@ export const DomainDetailPage: React.FC<DomainDetailPageProps> = ({
                     badgeBg: 'bg-amber-50 text-amber-800 border-amber-200',
                     desc: 'Production experience, LOR & Placement Assistance.',
                     deliverables: 'Advanced Architecture + LOR',
-                    paymentUrl: 'https://forms.gle/e5b45ed3dzF1FpCHA',
                   },
                 ].map((plan) => {
                   const isSelected = selectedDuration === plan.duration;
@@ -577,8 +575,9 @@ export const DomainDetailPage: React.FC<DomainDetailPageProps> = ({
                             e.stopPropagation();
                             setSelectedDuration(plan.duration as any);
                             onEnroll(domain);
-                            onToast(`Redirecting to registration for ${plan.duration} ${domain.title} Internship...`);
-                            window.open(plan.paymentUrl, '_blank', 'noopener,noreferrer');
+                            if (onOpenApply) {
+                              onOpenApply(domain, plan.duration as any);
+                            }
                           }}
                           className="w-full py-1.5 px-2.5 rounded-lg font-semibold text-xs transition-all duration-300 ease-in-out flex items-center justify-center gap-1 cursor-pointer bg-blue-600 hover:bg-blue-700 text-white shadow-xs"
                         >

@@ -69,4 +69,28 @@ export interface CertificateData {
   mentorSignature: string;
 }
 
+export interface ApplicationRecord {
+  id: string;
+  fullName: string;
+  email: string;
+  mobile: string;
+  college: string;
+  degree: string;
+  branch: string;
+  currentYear: string;
+  graduationYear: string;
+  preferredDomainId: string;
+  preferredDomainTitle: string;
+  internshipDuration: '4 Weeks' | '6 Weeks' | '3 Months' | '6 Months';
+  skills: string;
+  resumeName: string;
+  resumeSize?: string;
+  linkedinUrl?: string;
+  githubUrl?: string;
+  submittedAt: string;
+  paymentStatus: 'pending' | 'completed';
+  paymentId?: string;
+  amountPaid?: number;
+}
+
 export type ViewMode = 'landing' | 'domains' | 'domain_detail' | 'verify_cert' | 'about';

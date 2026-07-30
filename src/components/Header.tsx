@@ -9,11 +9,13 @@ interface HeaderProps {
   setViewMode: (mode: ViewMode) => void;
   selectedDomainTitle?: string;
   onSelectDomain: () => void;
+  onOpenApply?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
   viewMode,
   setViewMode,
+  onOpenApply,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -25,7 +27,7 @@ export const Header: React.FC<HeaderProps> = ({
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/90 border-b border-slate-200/80 shadow-xs transition-colors duration-300">
+    <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-white/95 border-b border-slate-200/80 shadow-xs transition-colors duration-300 transform-gpu">
       <nav className="max-w-[1160px] mx-auto px-4 md:px-6 h-16 md:h-20 flex items-center justify-between">
         {/* Logo */}
         <motion.div
@@ -65,7 +67,10 @@ export const Header: React.FC<HeaderProps> = ({
           <motion.button
             whileHover={{ y: -2, scale: 1.03, boxShadow: '0 4px 14px rgba(79, 70, 229, 0.3)' }}
             whileTap={{ scale: 0.97 }}
-            onClick={() => setViewMode('domains')}
+            onClick={() => {
+              if (onOpenApply) onOpenApply();
+              else setViewMode('domains');
+            }}
             className="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs transition-colors shadow-xs cursor-pointer flex items-center gap-1.5 ml-2"
           >
             Apply for Internship
@@ -118,7 +123,11 @@ export const Header: React.FC<HeaderProps> = ({
             </button>
             <motion.button
               whileTap={{ scale: 0.97 }}
-              onClick={() => { setViewMode('domains'); setMobileMenuOpen(false); }}
+              onClick={() => {
+                setMobileMenuOpen(false);
+                if (onOpenApply) onOpenApply();
+                else setViewMode('domains');
+              }}
               className="w-full text-center py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs mt-1"
             >
               Apply for Internship
